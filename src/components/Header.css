@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px #ccc solid;
+  width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px #ccc solid;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  margin-left: 30rem;
+  width: 35%;
+}
+
+.profile {
+  margin-right: 4rem;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.header-icons {
+  height: 1.5rem;
+}
