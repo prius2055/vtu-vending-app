@@ -5,10 +5,12 @@ import AboutImage from '../img/about-hero.png';
 import AnalyticsImage from '../img/carbon_analytics.png';
 import SocialImage from '../img/people.png';
 import ContentImage from '../img/content.png';
-import TestimonialImage1 from '../img/testimonial-1.png';
-import TestimonialImage2 from '../img/testimonial-2.png';
-import TestimonialImage3 from '../img/testimonial3.jpg';
-import TestimonialImage4 from '../img/testimonial-4.jpg';
+import Agent from '../img/agent.jpg';
+import TestimonialImage2 from '../img/airtel-logo.png';
+import TestimonialImage3 from '../img/etisalat-logo.png';
+import TestimonialImage4 from '../img/glo-logo.png';
+import TestimonialImage5 from '../img/mtn-logo.png';
+import TestimonialImage6 from '../img/dstv-logo.png';
 
 import './Home.css';
 
@@ -22,13 +24,13 @@ export default function Home() {
             <a href="#hero">Home</a>
           </li>
           <li>
+            <a href="#hero">Services</a>
+          </li>
+          <li>
             <a href="#about">About us</a>
           </li>
           <li>
             <a href="#contact">Contact</a>
-          </li>
-          <li>
-            <a href="#">Blogs</a>
           </li>
         </ul>
         <div className="header-buttons">
@@ -49,6 +51,119 @@ export default function Home() {
           Login
         </button>
       </section>
+      <section id="services">
+        <h2>Our services</h2>
+
+        <div className="services-cards">
+          <div className="card">
+            {/* <img src={SocialImage} alt="social interactions" /> */}
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/ios/50/000000/topup-payment.png"
+              alt="topup-payment"
+            />
+            <h3>Airtime recharge</h3>
+            <p>
+              Users on the platform can interact with posts they like, comment
+              and engage in discussions
+            </p>
+          </div>
+
+          <div className="card">
+            {/* <img src={AnalyticsImage} alt="analytics" /> */}
+            <img
+              width="48"
+              height="48"
+              src="https://img.icons8.com/material-outlined/48/000000/data-backup.png"
+              alt="data-backup"
+            />
+
+            <h3>Data recharge</h3>
+            <p>
+              Analytics to track the number of views, likes and comment and also
+              analyze the performance of your articles over a period of time
+            </p>
+          </div>
+
+          <div className="card">
+            <img src={ContentImage} alt="content creation" />
+            <h3>Cable subscription</h3>
+            <p>
+              Write nice and appealing with our in-built markdown, a rich text
+              editor
+            </p>
+          </div>
+
+          <div className="card">
+            {/* <img src={ContentImage} alt="content creation" /> */}
+
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/external-others-pike-picture/50/external-Cash-Exchange-wealth-others-pike-picture-2.png"
+              alt="external-Cash-Exchange-wealth-others-pike-picture-2"
+            />
+            <h3>Airtime to cash</h3>
+            <p>
+              Write nice and appealing with our in-built markdown, a rich text
+              editor
+            </p>
+          </div>
+
+          <div className="card">
+            {/* <img src={ContentImage} alt="content creation" /> */}
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/ios/50/card-in-use.png"
+              alt="card-in-use"
+            />
+            <h3>Utility bill payment</h3>
+            <p>
+              Write nice and appealing with our in-built markdown, a rich text
+              editor
+            </p>
+          </div>
+
+          <div className="card">
+            {/* <img src={ContentImage} alt="content creation" /> */}
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/ios/50/sms.png"
+              alt="sms"
+            />
+            <h3>Bulk SMS</h3>
+            <p>
+              Write nice and appealing with our in-built markdown, a rich text
+              editor
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="agent">
+        <div className="agent-details">
+        
+          <img src={Agent} alt="agent" />
+
+          <div className="testimonial-top-note">
+            <p>
+              Unlock new opportunities by joining VTU-vend as an authorized
+              agent. As a registered agent, you'll have access to exclusive
+              benefits and the chance to grow your business. Simply fill out the
+              form below to kickstart your journey towards becoming a trusted
+              VTU-vend partner. Join us in revolutionizing digital transactions
+              and providing essential services to customers. Your success is our
+              priority!
+            </p>
+
+            <button type="button">Become an Agent</button>
+          </div>
+        </div>
+      </section>
+
       <section id="about">
         <div className="about-top">
           <div className="about-chatter">
@@ -66,61 +181,9 @@ export default function Home() {
           </div>
           <img src={AboutImage} alt="about image" />
         </div>
-        <div className="about-bottom">
-          <h2>Our services</h2>
-          <p>
-            Our goal is to make writers and readers see our platform as their
-            next heaven for blogging, ensuring ease in interactions, connecting
-            with like-minded peers, have access to favorite content based on
-            interests and able to communicate your great ideas with people
-          </p>
-          <div className="about-cards">
-            <div className="card">
-              <img src={AnalyticsImage} alt="analytics" />
-              <h3>Analytics</h3>
-              <p>
-                Analytics to track the number of views, likes and comment and
-                also analyze the performance of your articles over a period of
-                time
-              </p>
-            </div>
-
-            <div className="card">
-              <img src={SocialImage} alt="social interactions" />
-              <h3>Social interactions</h3>
-              <p>
-                Users on the platform can interact with posts they like, comment
-                and engage in discussions
-              </p>
-            </div>
-
-            <div className="card">
-              <img src={ContentImage} alt="content creation" />
-              <h3>Content creation</h3>
-              <p>
-                Write nice and appealing with our in-built markdown, a rich text
-                editor
-              </p>
-            </div>
-          </div>
-        </div>
       </section>
+
       <section id="testimonials">
-        <div className="testimonial-top">
-          <img src={TestimonialImage1} alt="first testimonial image" />
-          <div className="testimonial-top-note">
-            <p>
-              "Chatter has become an integral part of my online experience. As a
-              user of this incredible blogging platform, I have discovered a
-              vibrant community of individuals who are passionate about sharing
-              their ideas and engaging in thoughtful discussions.”
-            </p>
-            <h4>
-              Adebobola Muhydeen, <span>Software developer at Apple</span>
-            </h4>
-            <button type="button">Join chatter</button>
-          </div>
-        </div>
         <div className="testimonial-bottom">
           <div className="testimonial-bottom-images">
             <div className="bottom-image-group">
