@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import AboutImage from '../img/about-hero.png';
-import AnalyticsImage from '../img/carbon_analytics.png';
-import SocialImage from '../img/people.png';
+import AboutImage from '../img/about-hero.jpg';
+import AboutImage2 from '../img/about-hero-2.jpg';
 import ContentImage from '../img/content.png';
 import Agent from '../img/agent.jpg';
-import TestimonialImage2 from '../img/airtel-logo.png';
-import TestimonialImage3 from '../img/etisalat-logo.png';
-import TestimonialImage4 from '../img/glo-logo.png';
-import TestimonialImage5 from '../img/mtn-logo.png';
-import TestimonialImage6 from '../img/dstv-logo.png';
+import Airtel from '../img/airtel-logo.png';
+import Etisalat from '../img/etisalat-logo.png';
+import Glo from '../img/glo-logo.png';
+import Mtn from '../img/mtn-logo.png';
+import Dstv from '../img/dstv-logo.png';
+import NineMobile from '../img/nine-mobile-logo.png';
 
 import './Home.css';
 
@@ -53,7 +53,6 @@ export default function Home() {
       </section>
       <section id="services">
         <h2>Our services</h2>
-
         <div className="services-cards">
           <div className="card">
             {/* <img src={SocialImage} alt="social interactions" /> */}
@@ -145,10 +144,9 @@ export default function Home() {
 
       <section id="agent">
         <div className="agent-details">
-        
           <img src={Agent} alt="agent" />
 
-          <div className="testimonial-top-note">
+          <div className="agent-note">
             <p>
               Unlock new opportunities by joining VTU-vend as an authorized
               agent. As a registered agent, you'll have access to exclusive
@@ -165,86 +163,101 @@ export default function Home() {
       </section>
 
       <section id="about">
-        <div className="about-top">
-          <div className="about-chatter">
-            <h2>About VTU-vend</h2>
-            <p>
-              Welcome to VTU-vend, your trusted online platform for seamless
-              transactions in data, airtime, TV subscriptions, and electricity
-              units. At VTU-vend, we pride ourselves on providing a
-              user-friendly and secure environment to meet all your digital
-              service needs. With a commitment to convenience and reliability,
-              we aim to simplify your transactions and enhance your overall
-              experience. Trust VTU-vend for a hassle-free journey in accessing
-              essential digital services.
-            </p>
-          </div>
-          <img src={AboutImage} alt="about image" />
-        </div>
-      </section>
-
-      <section id="testimonials">
-        <div className="testimonial-bottom">
-          <div className="testimonial-bottom-images">
-            <div className="bottom-image-group">
-              <img
-                src={TestimonialImage2}
-                alt="second testimonial image"
-                className="second-testimonial"
-              />
-              <img
-                src={TestimonialImage3}
-                alt="third testimonial image"
-                className="third-testimonial"
-              />
-            </div>
+        <h2>About VTU-vend</h2>
+        <div className="about-vend">
+          <p>
+            Welcome to VTU-vend, your trusted online platform for seamless
+            transactions in data, airtime, TV subscriptions, and electricity
+            units. At VTU-vend, we pride ourselves on providing a user-friendly
+            and secure environment to meet all your digital service needs. With
+            a commitment to convenience and reliability, we aim to simplify your
+            transactions and enhance your overall experience. Trust VTU-vend for
+            a hassle-free journey in accessing essential digital services.
+          </p>
+          <div className="about-images">
+            <img src={AboutImage} alt="about image" className="about-image-1" />
             <img
-              src={TestimonialImage4}
-              alt="fourth testimonial image"
-              className="fourth-testimonial"
+              src={AboutImage2}
+              alt="about image"
+              className="about-image-2"
             />
           </div>
-          <div className="testimonial-bottom-note">
-            <h2>Write, read and connect with great minds on chatter</h2>
+        </div>
+      </section>
+
+      <section id="products">
+        <h2>Products</h2>
+        <div className="product-detail">
+          <div className="product-logos">
+            <div className="p-detail">
+              <div>
+                <img src={Airtel} alt="airtel logo" className="airtel" />
+                <img src={Etisalat} alt="etisalat logo" className="etisalat" />
+              </div>
+              <img
+                src={NineMobile}
+                alt="9 mobile logo"
+                className="nine-mobile"
+              />
+            </div>
+
+            <div className="p-detail">
+              <img src={Glo} alt="glo logo" className="glo" />
+              <div>
+                <img src={Mtn} alt="mtn logo" className="mtn" />
+                <img src={Dstv} alt="dstv logo" className="dstv" />
+              </div>
+            </div>
+          </div>
+          <div className="p-note">
             <p>
-              Share people your great ideas, and also read write-ups based on
-              your interests. connect with people of same interests and goals
+              Explore our extensive selection of premium products, providing you
+              with an unparalleled array of choices across all prominent
+              telecommunication carriers and vendors in the nation. Immerse
+              yourself in a diverse range of top-tier offerings tailored to meet
+              your specific needs and preferences, ensuring you have access to
+              the latest and most advanced solutions available in the market.
+              Choose with confidence from our curated collection, where quality
+              meets innovation, and experience a seamless integration with major
+              telecom networks for unparalleled connectivity and performance.
             </p>
-            <button type="button">Get started</button>
+            <button type="button" className="p-btn">
+              Login to make a purchase
+            </button>
           </div>
         </div>
       </section>
-      <section id="contact">
-        <p>CHATTER</p>
 
-        <div className="contact-navigation">
-          <h3>Explore</h3>
-          <ul>
-            <li>Community</li>
-            <li>Trending blogs</li>
-            <li>Chatter for teams</li>
-          </ul>
+      <section id="footer">
+        <div className="contact">
+          <p>VTU-vend</p>
+          <div className="contact-navigation">
+            <h3>Explore</h3>
+            <ul>
+              <li>Community</li>
+              <li>Trending blogs</li>
+              <li>Chatter for teams</li>
+            </ul>
+          </div>
+          <div className="contact-navigation">
+            <h3>Support</h3>
+            <ul>
+              <li>Support docs</li>
+              <li>Join slack</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div className="contact-navigation">
+            <h3>Official blog</h3>
+            <ul>
+              <li>Official blog</li>
+              <li>Engineering blog</li>
+            </ul>
+          </div>
         </div>
-        <div className="contact-navigation">
-          <h3>Support</h3>
-          <ul>
-            <li>Support docs</li>
-            <li>Join slack</li>
-            <li>Contact</li>
-          </ul>
+        <div className='copyright'>
+          <p>All right reserved VTU-vend 2024</p>
         </div>
-        <div className="contact-navigation">
-          <h3>Official blog</h3>
-          <ul>
-            <li>Official blog</li>
-            <li>Engineering blog</li>
-          </ul>
-        </div>
-        <form>
-          <input type="text" required placeholder="your name" />
-          <input type="password" required placeholder="password" />
-          <button>submit</button>
-        </form>
       </section>
     </div>
   );
