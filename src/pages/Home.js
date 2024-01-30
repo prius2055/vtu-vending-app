@@ -34,8 +34,8 @@ export default function Home() {
           </li>
         </ul>
         <div className="header-buttons">
-          <NavLink to="/sign-in">Log in</NavLink>
-          <NavLink to="/sign-up" className="btn-blue">
+          <NavLink to="/login">Log in</NavLink>
+          <NavLink to="/signup" className="btn-blue">
             Sign up
           </NavLink>
         </div>
