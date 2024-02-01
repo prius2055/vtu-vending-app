@@ -2,14 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContent } from '../store/postSlice';
 
-
 import Navigation from '../components/Nagivation';
-import PostList from '../components/PostList';
+import DashboardInfo from '../components/DashboardInfo';
 import Header from '../components/Header';
 
-import './Feeds.css';
+import './Dashboard.css';
 
-export default function Feeds() {
+export default function Dashboard() {
   const { usersArray, currentUsers, isLoading, loadingError } = useSelector(
     (store) => store.users
   );
@@ -26,10 +25,13 @@ export default function Feeds() {
   ////////////////////////////////////////////////
   return (
     <div className="feed">
-      <Navigation />
+      <div className='dashboard-nav'>
+        <Navigation />
+      </div>
+
       <div className="feed-group">
         <Header />
-        <PostList />
+        <DashboardInfo />
       </div>
       {/* <button onClick={getData}>get post nice post</button> */}
     </div>

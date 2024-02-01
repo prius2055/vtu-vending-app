@@ -8,7 +8,7 @@ import {
   faVideo,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import PostList from '../components/PostList';
+import PostList from '../components/DashboardInfo';
 
 import './NewPost.css';
 import { NavLink } from 'react-router-dom';
