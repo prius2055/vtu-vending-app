@@ -25,7 +25,10 @@ export default function Dashboard() {
   ////////////////////////////////////////////////
   return (
     <div className="feed">
-      <Navigation />
+      <div className='dashboard-nav'>
+        <Navigation />
+      </div>
+
       <div className="feed-group">
         <Header />
         <DashboardInfo />

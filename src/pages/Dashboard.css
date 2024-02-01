@@ -3,13 +3,17 @@
   width: 100%;
 }
 
+.dashboard-nav {
+  background-color: #2a2929;
+  color: white;
+  width: 20%;
+}
+
 .feed-group {
   width: 100%;
 }
 
 .feed button {
   padding: 1rem 2rem;
-  margin-top: 1rem;
-
-  margin-left: 10rem;
+  /* margin-left: 10rem; */
 }

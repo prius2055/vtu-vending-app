@@ -1,5 +1,20 @@
 import { useSelector } from 'react-redux';
-import Post from './Post';
+import AirtimeTopUp from '../img/airtime.svg';
+import BuyData from '../img/data.jpg';
+import AirtimeToCash from '../img/airtime2cash.jpg';
+import UtilityBill from '../img/utility.jpg';
+import Cable from '../img/cable.jpg';
+import Wallet from '../img/fundacc.jpg';
+import TransferToOthers from '../img/transfer.svg';
+import BulkSms from '../img/sms.png';
+import ResultChecker from '../img/resultchecker.png';
+import Referrals from '../img/referral.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHandHoldingDollar,
+  faBoxArchive,
+  faMoneyBillTrendUp,
+} from '@fortawesome/free-solid-svg-icons';
 
 import './DashboardInfo.css';
 
@@ -27,86 +42,143 @@ const DashboardInfo = () => {
         </div>
       </section>
 
-      <div>
-        <p>Smart Earner</p>
-        <p>Account Number: </p>
-        <p>Account Name</p>
-        <p>Bank Name</p>
-      </div>
-      <div>
-        <p>Wallet balance</p>
-        <p>Referral Bonus</p>
-        <p>My total referrals</p>
-      </div>
-      <div>
-        <p>Transactions</p>
-        <p>Data Transactions</p>
-        <p>Airtime Transactions</p>
-        <p>Wallet Summary</p>
-        <p>Upgrade to Reseller</p>
-      </div>
-      <div>
-        <p>Notifications</p>
-        <p>FAQs</p>
-        <p>Customer Support</p>
-      </div>
+      <section className="d-acct-details">
+        <div className="acct-details">
+          <h3>Smart Earner account</h3>
+          <button className="acct-details-btn">Upgrade account</button>
+        </div>
+        <div className="acct-details-grp">
+          <div className="acct-details-number">
+            <p>Account Number: 999000124</p>
+            <p>Account Name: vtuvend-prius</p>
+            <p>Bank Name: Replit Bank PLC</p>
+          </div>
+          <div className="d-amount">
+            <p>Available balance</p>
+            <p>#0.00</p>
+          </div>
+          <div className="d-amount">
+            <p>Referral Bonus</p>
+            <p>#0.00</p>
+          </div>
+          <div className="d-amount">
+            <p>My total referrals</p>
+            <p>0 referrals</p>
+          </div>
+        </div>
+      </section>
 
-      <div>
-        <div>
-          <p>Airtime top-up</p>
+      <section className="transaction-grp">
+        <div className="transactions">
+          <div>
+            <p>Transactions</p>
+          </div>
+          <div>
+            <p>Data Transactions</p>
+          </div>
+          <div>
+            <p>Airtime Transactions</p>
+          </div>
+          <div>
+            <p>Wallet Summary</p>
+          </div>
+          <div>
+            <p>Upgrade to Reseller</p>
+          </div>
+          <div>
+            <p>FAQs</p>
+          </div>
+          <div>
+            <p>Customer support</p>
+          </div>
         </div>
-        <div>
-          <p>Buy data</p>
-        </div>
-        <div>
-          <p>Airtime top-up</p>
-        </div>
-        <div>
-          <p>Airtime to cash</p>
-        </div>
-        <div>
-          <p>Electricity bills</p>
-        </div>
-        <div>
-          <p>Cable subscription</p>
-        </div>
-        <div>
-          <p>Bonus to wallet</p>
-        </div>
-        <div>
-          <p>Transfer to other user</p>
-        </div>
-        <div>
-          <p>Bulk SMS</p>
-        </div>
-        <div>
-          <p>Result checker</p>
-        </div>
-        <div>
-          <p>Recharge card printing</p>
-        </div>
-        <div>
-          <p>My referrals</p>
-        </div>
-      </div>
-      <div>
-        <h2>Transaction detail</h2>
+      </section>
 
-        <div>
+      <section className="dashboard-products">
+        <h2>Products</h2>
+        <div className="d-products">
           <div>
-            <p>Wallet balance</p>
-            <p>2000</p>
+            <img src={AirtimeTopUp} alt="Airtime top up" />
+            <p>Airtime top-up</p>
           </div>
           <div>
-            <p>Total funding</p>
-            <p>2000</p>
+            <img src={BuyData} alt="Buy data" />
+            <p>Buy data</p>
+          </div>
+
+          <div>
+            <img src={AirtimeToCash} alt="Airtime to cash" />
+            <p>Airtime to cash</p>
           </div>
           <div>
-            <p>Total Spent</p>
-            <p>2000</p>
+            <img src={UtilityBill} alt="Electricity bill" />
+            <p>Electricity bills</p>
+          </div>
+          <div>
+            <img src={Cable} alt="Cable subscription" />
+            <p>Cable subscription</p>
+          </div>
+          <div>
+            <img src={Wallet} alt="Bonus to wallet" />
+            <p>Bonus to wallet</p>
+          </div>
+          <div>
+            <img src={TransferToOthers} alt="Transfer to other users" />
+            <p>Transfer to other user</p>
+          </div>
+          <div>
+            <img src={BulkSms} alt="Bulk SMS" />
+            <p>Bulk SMS</p>
+          </div>
+          <div>
+            <img src={ResultChecker} alt="Result checker" />
+            <p>Result checker</p>
+          </div>
+
+          <div>
+            <img src={Referrals} alt="Referrals" />
+            <p>My referrals</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="dashboard-footer">
+        <h2>Transaction summary</h2>
+        <div className="footer-detail">
+          <div className="f-detail-grp">
+            <FontAwesomeIcon
+              icon={faHandHoldingDollar}
+              className="dashboard-footer-icon"
+            />
+            <div className="f-detail-note">
+              <p>Wallet balance</p>
+              <p>2000</p>
+            </div>
+          </div>
+
+          <div className="f-detail-grp">
+            <FontAwesomeIcon
+              icon={faBoxArchive}
+              className="dashboard-footer-icon"
+            />
+            <div className="f-detail-note">
+              <p>Total funding</p>
+              <p>2000</p>
+            </div>
+          </div>
+
+          <div className="f-detail-grp">
+            <FontAwesomeIcon
+              icon={faMoneyBillTrendUp}
+              className="dashboard-footer-icon"
+            />
+            <div className="f-detail-note">
+              <p>Total spent</p>
+              <p>2000</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
