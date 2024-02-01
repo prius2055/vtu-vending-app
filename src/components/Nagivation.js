@@ -26,14 +26,13 @@ export default function Nagivation() {
   //     user.email === currentUser.email && user.password === currentUser.password
   // );
 
-
   return (
     <div className="navigation-group">
       <NavLink to="/" className="logo">
-        CHATTER
+        VTU-vend
       </NavLink>
 
-      {usersArray.map((user) => (
+      {/* {usersArray.map((user) => (
         <nav className="navigation">
           <ul className="navbar">
             <li>
@@ -45,43 +44,18 @@ export default function Nagivation() {
           </ul>
           <button type="button">Sign out</button>
         </nav>
-      ))}
+      ))} */}
 
       <nav className="navigation">
         <div className="navbar">
-          <div>
-            <h3>Overview</h3>
-            <ul>
-              <li className="list-group">
-                <img src={feedImage} alt="feed" />
-                <li>
-                  <NavLink to="/feeds">Feed</NavLink>
-                </li>
-              </li>
-              <li className="list-group">
-                <FontAwesomeIcon icon={faBookmark} />
-                <li>Bookmarks</li>
-              </li>
-              <li className="list-group">
-                <FontAwesomeIcon icon={faUserGroup} />
-                <li>Team blogs</li>
-              </li>
-              <li className="list-group">
-                <FontAwesomeIcon icon={faEnvelopeOpen} />
-                <li>Drafts</li>
-              </li>
-              <li className="list-group">
-                <img src={chartImage} alt="chart" />
-                <li>Analysis</li>
-              </li>
-            </ul>
-          </div>
+          <NavLink to="/dashboard">
+            <h3>Dashboard</h3>
+          </NavLink>
 
           <div>
-            {/* <NavLink to="/member">Become a member</NavLink> */}
             <NavLink to="/member" className="trending">
-              <h3>Trending Tags</h3>
               <FontAwesomeIcon icon={faArrowTrendUp} />
+              <h3>Buy Data</h3>
             </NavLink>
 
             <ul className="trending-list">
@@ -94,8 +68,8 @@ export default function Nagivation() {
             </ul>
           </div>
           <div>
-            <h3> Personal</h3>
-            <ul>
+            <NavLink>Buy Airtime</NavLink>
+            {/* <ul>
               <li className="list-group">
                 <FontAwesomeIcon icon={faUser} />
                 <li>Account</li>
@@ -107,8 +81,15 @@ export default function Nagivation() {
               <li>
                 <li>Log Out</li>
               </li>
-            </ul>
+            </ul> */}
           </div>
+          <NavLink>Utilities Payment</NavLink>
+          <NavLink>Fund Wallet</NavLink>
+          <NavLink>Pricing</NavLink>
+          <NavLink>Account</NavLink>
+          <NavLink>Change pin</NavLink>
+          <NavLink>For developers</NavLink>
+          <NavLink>Logout</NavLink>
         </div>
       </nav>
     </div>
