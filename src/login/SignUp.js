@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { setUser } from '../store/postSlice';
+
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -120,7 +120,6 @@ const SignUp = () => {
           </p>
         </div>
         <div className="sign-in-form">
-
           <div className="sign-in-form-nav">
             <NavLink
               to="/signup"
@@ -190,7 +189,11 @@ const SignUp = () => {
             >
               Create account
             </button>
-            <button className='btn-google' onClick={googleSignUpHandler} type="submit">
+            <button
+              className="btn-google"
+              onClick={googleSignUpHandler}
+              type="submit"
+            >
               Sign up with google
             </button>
           </div>
