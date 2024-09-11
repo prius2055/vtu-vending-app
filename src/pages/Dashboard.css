@@ -1,6 +1,6 @@
-.feed {
+.dashboard {
   display: flex;
-  width: 100%;
+  position: relative;
 }
 
 .dashboard-nav {
@@ -10,7 +10,7 @@
 }
 
 .feed-group {
-  width: 100%;
+  width: 90%;
 }
 
 .feed button {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { setUser } from '../store/postSlice';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -38,8 +37,6 @@ const LogIn = () => {
 
   const [userLogin, setUserLogIn] = useState(userData);
   const [loginError, setLoginError] = useState(false);
-
-  const [authUser, setAuthUser] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -93,8 +90,50 @@ const LogIn = () => {
   };
 
   // HANDLE FORM FOR EXISTING USERS
-  const logInHandler = async (e) => {
+  // const logInHandler = (e) => {
+  //   e.preventDefault();
+  //   const data = new FormData();
+
+  //   data.append('email', e.target.email.value);
+  //   data.append('password', e.target.password.value);
+  //   data.append('image', e.target.image.value);
+
+  // };
+
+  const logInHandler = (e) => {
     e.preventDefault();
+    // const pix = e.target.files;
+    const data = new FormData();
+
+    // data.append('post[user_id]', formData.user_id);
+    // data.append('post[author_name]', formData.author_name);
+    data.append('post[topic]', e.target.topic.value);
+    data.append('post[content]', e.target.content.value);
+    data.append('post[post_image]', e.target.post_image.files[0]);
+
+    //  const authToken = localStorage.getItem('token');
+
+    fetch(`http://localhost:3001/api/v1/posts`, {
+      method: 'POST',
+      // headers: {
+      //   'content-type': 'application/json',
+      //   // authorization: 'authToken',
+      // },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(`something went wrong ${error}`);
+      });
+
+    // setnewPost((prev) => ({
+    //   ...prev,
+    //   topic: '',
+    //   content: '',
+    // }));
   };
 
   return (
@@ -136,15 +175,25 @@ const LogIn = () => {
           </div>
           <form className="sign-in-form-area" onSubmit={logInHandler}>
             <h2>Welcome back</h2>
-            <label>
-              Email address
-              <input type="email" onChange={emailHandler} />
+            <label htmlFor="topic">
+              {/* Email address */}
+              Topic
+              <input type="topic" id="topic" name="topic" />
             </label>
-            <label>
-              Password
-              <input type="password" onChange={passwordHandler} />
+            <label htmlFor="content">
+              Content
+              <textarea
+                id="content"
+                name="content"
+                placeholder="Write a post..."
+              ></textarea>
             </label>
-            <button className="account-btn">Log in</button>
+            <label htmlFor="image">
+              Upload image
+              <input type="file" id="post_image" name="post_image" />
+            </label>
+            {/* <button className="account-btn">Log in</button> */}
+            <button className="account-btn">Post</button>
           </form>
         </div>
       </div>

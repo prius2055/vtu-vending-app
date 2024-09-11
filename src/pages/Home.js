@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchUserDetail } from '../store/userDetailSlice';
 
 import AboutImage from '../img/about-hero.jpg';
 import AboutImage2 from '../img/about-hero-2.jpg';
@@ -15,6 +17,24 @@ import NineMobile from '../img/nine-mobile-logo.png';
 import './Home.css';
 
 export default function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(fetchUserDetail());
+    fetch('https://geodnatechsub.com/api/user/', {
+      headers: {
+        'Authorization': 'Token 3511591c93907798464ca20ba3bff2b8f0d9a9b1',
+        'content-type': 'application/json',
+      },
+    })
+      .then((res) => {
+        return res.json;
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   return (
     <div className="home">
       <header>
@@ -34,7 +54,9 @@ export default function Home() {
           </li>
         </ul>
         <div className="header-buttons">
-          <NavLink to="/login">Log in</NavLink>
+          <NavLink to="/login" className="btn-white">
+            Log in
+          </NavLink>
           <NavLink to="/signup" className="btn-blue">
             Sign up
           </NavLink>
@@ -255,7 +277,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className='copyright'>
+        <div className="copyright">
           <p>All right reserved VTU-vend 2024</p>
         </div>
       </section>

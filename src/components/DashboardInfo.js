@@ -15,6 +15,7 @@ import {
   faBoxArchive,
   faMoneyBillTrendUp,
 } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 import './DashboardInfo.css';
 
@@ -23,9 +24,20 @@ const DashboardInfo = () => {
 
   // const filteredPosts = posts.filter((post) => post.posts.length !== 0);
 
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+  };
+
+  fetch('https://tomsub.com/api/data/', requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log('error', error));
+
   return (
-    <div className="dashboard">
+    <div className="dashboard-info">
       <section className="d-action">
+        <FontAwesomeIcon icon={faBell} className="bell-icon" />
         <div className="d-detail">
           <h3>Hello Prius</h3>
           <div className="d-detail-grp">
