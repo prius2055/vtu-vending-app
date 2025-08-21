@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import ProtectedRoutes from './components/ProtectedRoutes';
 import Navigation from './components/SideBarNav';
 import Home from './pages/Home';
 import SignUp from './login/SignUp';
@@ -19,7 +19,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+         <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoutes>
+              <Dashboard/>
+            </ProtectedRoutes>
+          }
+        />
         {/* <Route path="/feeds" element={<Navigation />} /> */}
       </Routes>
 

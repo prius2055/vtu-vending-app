@@ -25,10 +25,22 @@
   justify-content: space-between;
   padding: 5rem;
 }
+.d-detail-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.d-detail-profile img {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  
+}
 
 .d-detail h3 {
-  margin-bottom: 1rem;
-  color: #543ee0;
+ margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .d-detail p {

@@ -80,8 +80,52 @@ header ul li a {
   color: white;
 }
 
+
+#data_plans {
+  margin-top: 2rem;
+  padding: 2rem 10rem;
+}
+
+#data_plans h2{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+.data-plans-container {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.data-plans-table {
+  width: 23%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.data-plans-table th,
+.data-plans-table td {
+  border: 1px solid #333;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.data-plans-table th {
+  background-color: #f2f2f2;
+}
+
+.btn_buy_data {
+  padding: 0.5rem 1rem;
+  background: #543ee0;
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  cursor: pointer;
+}
+
 #services {
-  margin-top: 4rem;
+  margin-top: 1rem;
   padding: 2rem 10rem;
 }
 

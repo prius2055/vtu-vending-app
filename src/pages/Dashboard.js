@@ -5,15 +5,12 @@ import DashboardInfo from '../components/DashboardInfo';
 import './Dashboard.css';
 import SideBarNav from '../components/SideBarNav';
 
-export default function Dashboard() {
-  // const { usersArray, currentUsers, isLoading, loadingError } = useSelector(
-  //   (store) => store.users
-  // );
+export default function Dashboard({user}) {
 
   return (
     <div className="dashboard">
       <SideBarNav />
-      <DashboardInfo />
+      <DashboardInfo user={user} />
     </div>
   );
 }

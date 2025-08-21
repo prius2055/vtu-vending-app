@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchUserDetail } from '../store/userDetailSlice';
 
 import AboutImage from '../img/about-hero.jpg';
 import AboutImage2 from '../img/about-hero-2.jpg';
@@ -17,23 +15,30 @@ import NineMobile from '../img/nine-mobile-logo.png';
 import './Home.css';
 
 export default function Home() {
-  const dispatch = useDispatch();
 
+const [dataPlans, setDataPlans] = useState([])
   useEffect(() => {
-    // dispatch(fetchUserDetail());
-    fetch('https://geodnatechsub.com/api/user/', {
-      headers: {
-        'Authorization': 'Token 3511591c93907798464ca20ba3bff2b8f0d9a9b1',
-        'content-type': 'application/json',
-      },
-    })
-      .then((res) => {
-        return res.json;
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+   
+    fetch('https://vtu.ng/wp-json/api/v2/variations/data')
+      .then((res) => res.json())
+      .then((result) => 
+        // console.log(result.data))
+        setDataPlans(result.data));
+  }, [dataPlans]);
+
+  console.log(dataPlans)
+
+
+
+  // Step 1: Group plans by service_name
+  const groupedPlans = dataPlans?.reduce((acc, plan) => {
+    const { service_name } = plan;
+    if (!acc[service_name]) acc[service_name] = [];
+    acc[service_name].push(plan);
+    return acc;
+  }, {});
+
+  console.log(groupedPlans);
 
   return (
     <div className="home">
@@ -73,6 +78,102 @@ export default function Home() {
           Login
         </button>
       </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+<section id='data_plans'>
+  <h2>Data Plans</h2>
+
+  {/* {(dataPlans?.length ?? 0) === 0 ? (dataPlans.map((data)=>{<div>   
+    <table className="data-plans-table">
+      <thead>
+        <tr>
+          <th colSpan="4">MTN</th>
+        </tr>
+        <tr>
+          <th>Sn</th>
+          <th>Data Plan</th>
+          <th>Duration</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>500MB</td>
+          <td>7 days</td>
+          <td>₦150</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>1GB</td>
+          <td>30 days</td>
+          <td>₦300</td>
+        </tr>
+      </tbody>
+     
+    
+    </table>
+    </div>})
+  
+  ) : (
+
+<div>No data yet</div>
+  )} */}
+
+
+
+
+
+
+ <div className="data-plans-container">
+      {Object.entries(groupedPlans).map(([serviceName, plans]) => (
+        
+          <table key={serviceName} className="data-plans-table">
+            
+            <thead>
+              <tr>
+                <th  colSpan="4">{serviceName} Data Plans</th>
+              
+              </tr>
+              <tr>
+                <th>Data Plan</th>
+                <th>Price (₦)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {plans.map(plan => (
+                <tr key={plan.variation_id}>
+                  <td>{plan.data_plan}</td>
+                  <td>{plan.price}</td>
+                  <td><button className="btn_buy_data">Buy</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+       
+      ))}
+    </div>
+
+
+
+  </section>
+
       <section id="services">
         <h2>Our services</h2>
         <div className="services-cards">

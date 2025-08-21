@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useEffect,useState} from "react";
+
 import AirtimeTopUp from '../img/airtime.svg';
 import BuyData from '../img/data.jpg';
 import AirtimeToCash from '../img/airtime2cash.jpg';
@@ -19,27 +20,98 @@ import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 import './DashboardInfo.css';
 
-const DashboardInfo = () => {
-  // const { posts } = useSelector((store) => store.post);
+const DashboardInfo = ({ user }) => {
 
-  // const filteredPosts = posts.filter((post) => post.posts.length !== 0);
+const firstname = user ? user.firstname : 'Guest';
+const profileImage = user.profilePicture ? user.profilePicture : `https://ui-avatars.com/api/?name=${firstname}`;
 
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-  };
+//  const [token, setToken] = useState(localStorage.getItem("vtuToken") || null);
+//   const [error, setError] = useState(null);
 
-  fetch('https://tomsub.com/api/data/', requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log('error', error));
+  // useEffect(() => {
+  //   const getToken = async () => {
+  //     try {
+  //       const res = await fetch("https://vtu.ng/wp-json/jwt-auth/v1/token", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           username: process.env.REACT_APP_VTU_USERNAME,
+  //           password: process.env.REACT_APP_VTU_PASSWORD, 
+  //         }),
+  //       });
+
+  //       if (!res.ok) {
+  //         throw new Error(`HTTP error! status: ${res.status}`);
+  //       }
+
+  //       const data = await res.json();
+  //       console.log("VTU Token response:", data);
+
+  //       if (data.token) {
+  //         setToken(data.token);
+  //         localStorage.setItem("vtuToken", data.token);
+  //       } else {
+  //         throw new Error(data.message || "Token not returned");
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching VTU token:", err);
+  //       setError(err.message);
+  //     }
+  //   };
+
+  //   if (!token) {
+  //     getToken();
+  //   }
+
+  //    const getWalletBalance = async () => {
+  //     try {
+  //       const res = await fetch("https://vtu.ng/wp-json/jwt-auth/v1/balance", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "Authorization": `Bearer ${process.env.VTU_TOKEN}`
+  //         }
+        
+  //       });
+
+  //       if (!res.ok) {
+  //         throw new Error(`HTTP error! status: ${res.status}`);
+  //       }
+
+  //       const data = await res.json();
+  //       console.log("wallet balance:", data);
+
+  //       // if (data.token) {
+  //       //   setToken(data.token);
+  //       //   localStorage.setItem("vtuToken", data.token);
+  //       // } else {
+  //       //   throw new Error(data.message || "Token not returned");
+  //       // }
+  //     } catch (err) {
+  //       console.error("Error fetching VTU token:", err);
+  //       setError(err.message);
+  //     }
+  //   };
+
+  //   // getWalletBalance();
+
+  // }, [token]);
+
+
+
 
   return (
     <div className="dashboard-info">
       <section className="d-action">
         <FontAwesomeIcon icon={faBell} className="bell-icon" />
         <div className="d-detail">
-          <h3>Hello Prius</h3>
+          <div className='d-detail-profile'>
+              <img src={profileImage} alt={`${firstname}'s profile`} />
+              <h3>Hello {firstname}</h3>
+          </div>
+        
           <div className="d-detail-grp">
             <div className="d-welcome">
               <h2>Welcome to VTU-vend</h2>

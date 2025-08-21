@@ -29,8 +29,9 @@
   width: 60rem;
   height: 45rem;
   position: absolute;
-  top: 12rem;
-  left: 30rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   background-color: white;
 }
@@ -57,37 +58,40 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* padding: 1rem 3rem 1rem 5rem; */
-  /* margin: 0.5rem 1rem; */
-  border: 1px #ccc solid;
-  width: 55%;
+  margin: 0.5rem 2%;
+
+ /* height: 30rem; */
+ align-self: center;
+ width: 50%
 }
 
 .sign-in-form-nav {
   display: flex;
-  flex-direction: row;
+align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-  width: 100%;
+
+  padding-bottom: 0.5rem;
+
+    border-bottom: 1px #ccc solid;
 }
 
 .active {
   border-bottom: 5px #543ee0 solid;
-  padding-bottom: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  cursor:not-allowed;
 }
 
 .inactive {
-  border-bottom: 5px #ccc solid;
-  padding-bottom: 0.5rem;
+  /* border-bottom: 5px #ccc solid; */
+  color: #543ee0;
 }
 
 .sign-in-form-area {
   border: none;
   margin-top: 1.2rem;
-  width: 25rem;
+  /* width: 25rem; */
   display: flex;
   flex-direction: column;
 }
@@ -95,19 +99,18 @@
 .sign-in-form-area h2 {
  
   margin-bottom: 1rem;
+  text-align: center;
  
 }
 
 .name-field {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.5rem;
+  margin:0;
+  padding: 0;
 }
 
-.name-field input {
-  margin-right: 12rem;
-  width: 90%;
-}
+
 
 .sign-in-form-area label {
   text-align: left;

@@ -5,26 +5,8 @@ import { useDispatch } from 'react-redux';
 import './Sign.css';
 
 const userData = {
-  firstname: '',
-  lastname: '',
-  role: '',
   email: '',
-  image: '',
-  loggedIn: false,
-  registrationDate: '',
-  userFeeds: [
-    {
-      feedId: 'post1',
-      feedTopic: 'Software Engineering',
-      feedIntro: 'Software...',
-      feedDate: '',
-      feedContent: {
-        content: ' ',
-        img: '',
-        video: '',
-      },
-    },
-  ],
+  password: '',
 };
 
 // const auth = getAuth();
@@ -50,18 +32,6 @@ const LogIn = () => {
     setShowRegister(true);
   };
 
-  const firstNameHandler = (e) => {
-    setUserLogIn((prev) => ({ ...prev, firstname: e.target.value }));
-  };
-
-  const lastNameHandler = (e) => {
-    setUserLogIn((prev) => ({ ...prev, lastname: e.target.value }));
-  };
-
-  const roleHandler = (e) => {
-    setUserLogIn((prev) => ({ ...prev, role: e.target.value }));
-  };
-
   const emailHandler = (e) => {
     setUserLogIn((prev) => ({ ...prev, email: e.target.value }));
   };
@@ -70,70 +40,53 @@ const LogIn = () => {
     setUserLogIn((prev) => ({ ...prev, password: e.target.value.trim() }));
   };
 
-  const confirmPasswordHandler = (e) => {
-    setUserLogIn((prev) => ({
-      ...prev,
-      confirmPassword: e.target.value.trim(),
-    }));
-  };
 
-  // HANDLE FORM FOR NEW REGISTRATION
-  // WITH GOOGLE EMAIL/PASSWORD SIGN UP
-  const signUpHandler = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  };
 
-  //WITH GOOGLE SIGN UP
-  const googleSignUpHandler = (e) => {
-    e.preventDefault();
-    signInWithPopup(auth, provider);
-  };
+    if (
+      !userLogin.email ||
+      !userLogin.password
+    ) {
+      setLoginError(true);
+      return;
+    }
 
-  // HANDLE FORM FOR EXISTING USERS
-  // const logInHandler = (e) => {
-  //   e.preventDefault();
-  //   const data = new FormData();
-
-  //   data.append('email', e.target.email.value);
-  //   data.append('password', e.target.password.value);
-  //   data.append('image', e.target.image.value);
-
-  // };
-
-  const logInHandler = (e) => {
-    e.preventDefault();
-    // const pix = e.target.files;
-    const data = new FormData();
-
-    // data.append('post[user_id]', formData.user_id);
-    // data.append('post[author_name]', formData.author_name);
-    data.append('post[topic]', e.target.topic.value);
-    data.append('post[content]', e.target.content.value);
-    data.append('post[post_image]', e.target.post_image.files[0]);
-
-    //  const authToken = localStorage.getItem('token');
-
-    fetch(`http://localhost:3001/api/v1/posts`, {
+     try {
+    const response = await fetch('http://localhost:5000/api/v1/login', {
       method: 'POST',
-      // headers: {
-      //   'content-type': 'application/json',
-      //   // authorization: 'authToken',
-      // },
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(`something went wrong ${error}`);
-      });
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: userLogin.email,
+        password: userLogin.password,
+      }),
+    });
 
-    // setnewPost((prev) => ({
-    //   ...prev,
-    //   topic: '',
-    //   content: '',
-    // }));
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Registration failed');
+    }
+
+    console.log('User registered:', data);
+
+    // Optionally store token in localStorage
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+    }
+
+    // Redirect to login page after successful signup
+    navigate('/dashboard');
+
+  } catch (err) {
+    console.error(err);
+    setLoginError(true);
+  }
+
+
   };
 
   return (
@@ -173,27 +126,22 @@ const LogIn = () => {
               LOGIN
             </NavLink>
           </div>
-          <form className="sign-in-form-area" onSubmit={logInHandler}>
+          <form className="sign-in-form-area" onSubmit={handleSubmit}>
             <h2>Welcome back</h2>
-            <label htmlFor="topic">
-              {/* Email address */}
-              Topic
-              <input type="topic" id="topic" name="topic" />
+            <label htmlFor="email">
+              Email address
+              <input type="email" id="email" name="email" onChange={emailHandler}/>
             </label>
-            <label htmlFor="content">
-              Content
-              <textarea
-                id="content"
-                name="content"
-                placeholder="Write a post..."
-              ></textarea>
+            <label htmlFor="password">
+              Password
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={passwordHandler}
+              />
             </label>
-            <label htmlFor="image">
-              Upload image
-              <input type="file" id="post_image" name="post_image" />
-            </label>
-            {/* <button className="account-btn">Log in</button> */}
-            <button className="account-btn">Post</button>
+            <button className="account-btn">Login</button>
           </form>
         </div>
       </div>

@@ -33,9 +33,9 @@ a {
 
 a.active {
   background-color: #543ee0;
-  padding: 0.8rem 1.5rem;
+  /* padding: 0.8rem 1.5rem;
   margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  margin-right: -1.5rem; */
 }
 
 .n-link {

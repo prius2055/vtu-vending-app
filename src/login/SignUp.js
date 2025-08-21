@@ -8,24 +8,9 @@ import './Sign.css';
 const userData = {
   firstname: '',
   lastname: '',
-  role: '',
   email: '',
-  image: '',
-  loggedIn: false,
-  registrationDate: '',
-  userFeeds: [
-    {
-      feedId: 'post1',
-      feedTopic: 'Software Engineering',
-      feedIntro: 'Software...',
-      feedDate: '',
-      feedContent: {
-        content: ' ',
-        img: '',
-        video: '',
-      },
-    },
-  ],
+  password: '',
+  confirmPassword: '',
 };
 
 // const auth = getAuth();
@@ -61,9 +46,7 @@ const SignUp = () => {
     setUserLogIn((prev) => ({ ...prev, lastname: e.target.value }));
   };
 
-  const roleHandler = (e) => {
-    setUserLogIn((prev) => ({ ...prev, role: e.target.value }));
-  };
+
 
   const emailHandler = (e) => {
     setUserLogIn((prev) => ({ ...prev, email: e.target.value }));
@@ -80,22 +63,65 @@ const SignUp = () => {
     }));
   };
 
-  // HANDLE FORM FOR NEW REGISTRATION
-  // WITH GOOGLE EMAIL/PASSWORD SIGN UP
-  const signUpHandler = (e) => {
-    e.preventDefault();
-  };
 
-  //WITH GOOGLE SIGN UP
-  const googleSignUpHandler = (e) => {
-    e.preventDefault();
-    signInWithPopup(auth, provider);
-  };
 
-  // HANDLE FORM FOR EXISTING USERS
-  const logInHandler = async (e) => {
-    e.preventDefault();
-  };
+
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Simple form validation before sending request
+  if (
+    !userLogin.firstname ||
+    !userLogin.lastname ||
+    !userLogin.email ||
+    !userLogin.password ||
+    userLogin.password !== userLogin.confirmPassword
+  ) {
+    setLoginError(true);
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/api/v1/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstname: userLogin.firstname,
+        lastname: userLogin.lastname,
+        email: userLogin.email,
+        password: userLogin.password,
+        confirmPassword: userLogin.confirmPassword,
+      }),
+    });
+
+
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Registration failed');
+    }
+
+  
+
+    // Optionally store token in localStorage
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+    }
+
+    // Redirect to login page after successful signup
+    navigate('/dashboard');
+      console.log('User registered:', data);
+
+  } catch (err) {
+    console.error(err);
+    setLoginError(true);
+  }
+};
+
 
   return (
     <div className="overlay">
@@ -136,7 +162,7 @@ const SignUp = () => {
             </NavLink>
           </div>
 
-          <div className="sign-in-form-area">
+          <form className="sign-in-form-area" onSubmit={handleSubmit}>
             <h2>Register here</h2>
             <div className="name-field">
               <label className="first-name-label">
@@ -185,18 +211,11 @@ const SignUp = () => {
             <button
               className="account-btn"
               type="submit"
-              onClick={signUpHandler}
             >
               Create account
             </button>
-            <button
-              className="btn-google"
-              onClick={googleSignUpHandler}
-              type="submit"
-            >
-              Sign up with google
-            </button>
-          </div>
+           
+          </form>
         </div>
       </div>
     </div>
